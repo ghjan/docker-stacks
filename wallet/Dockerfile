@@ -1,7 +1,7 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
-FROM ubuntu/xenial
+FROM ubuntu:xenial
 
 MAINTAINER Jupyter Project <jupyter@googlegroups.com>
 
@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     qml-module-qtmultimedia \
     libzbar-dev \
     && apt-get clean && \
-    rm -rf /var/lib/apt/lists/* &&
-    makedir -p /data/wallet
+    rm -rf /var/lib/apt/lists/*
 
+RUN  mkdir -p /data/wallet
 WORKDIR /data/wallet
