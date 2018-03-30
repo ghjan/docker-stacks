@@ -10,6 +10,15 @@ USER root
 # Install all OS dependencies for fully functional notebook server
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     build-essential \
+    cmake \
+    libboost-all-dev \
+    miniupnpc \
+    libunbound-dev \
+    graphviz \
+    doxygen \
+    libunwind8-dev \
+    pkg-config \
+    libssl-dev \
     git \
     python-dev \
     vim \
@@ -23,7 +32,11 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     qml-module-qtquick-dialogs \
     qml-module-qt-labs-settings \
     libqt5qml-graphicaleffects \
+    qtmultimedia5-dev \
+    qml-module-qtmultimedia \
+    libzbar-dev \
     && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* &&
+    makedir -p /data/wallet
 
-
+WORKDIR /data/wallet
